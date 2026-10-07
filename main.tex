@@ -1,0 +1,263 @@
+\documentclass[9pt,a4paper]{extarticle}
+
+% ---------- THEME: Packages & Geometry ----------
+\usepackage[left=0.25in,right=0.25in,top=0.18in,bottom=0.08in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}
+% Body font: keep exactly ONE of these lines uncommented.
+% Carlito is very narrow; the alternatives are scaled so the page still fits on one page.
+% Each scale is the largest that keeps this content on one page; re-check \SideLabel offsets after switching.
+\usepackage[sfdefault,lf]{carlito} % 'lf' for lining figures
+% \usepackage[default,scale=0.95]{lato}
+% \usepackage[sfdefault,scale=0.92]{roboto}
+% \usepackage[sfdefault,lining,scale=0.90]{FiraSans}
+% \usepackage[default,scale=0.88]{opensans}
+% \usepackage[sfdefault,scale=0.88]{noto-sans}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{array}
+
+% ---------- THEME: Fonts ----------
+\newcommand{\HeadingFont}{\bfseries} 
+\newcommand{\LinkFont}{\ttfamily} % cmtt has no bold weight
+
+\newcommand{\NameFont}{\fontsize{18}{20}\selectfont\HeadingFont}
+\newcommand{\BannerTitleFont}{\fontsize{11}{13}\selectfont\HeadingFont}
+\newcommand{\EntryTitleFont}{\fontsize{9.5}{10.5}\selectfont\HeadingFont}
+\newcommand{\BodyFontSize}{\fontsize{9}{9.5}\selectfont}
+\newcommand{\LinkSize}{\fontsize{8}{9.5}\selectfont} % cmtt ships at 8pt, not 8.5pt
+
+\newcommand{\CellStrut}{\rule[-0.6ex]{0pt}{2.4ex}}
+\newcommand{\SideLabel}[2][0pt]{\raisebox{-#1}[0pt][0pt]{#2}}
+
+% ---------- THEME: Colours ----------
+% Accent colour: keep exactly ONE PrimaryColor line uncommented.
+% All options keep white banner text readable (contrast >= 5.8:1).
+\definecolor{PrimaryColor}{RGB}{47,84,150} % Navy
+% \definecolor{PrimaryColor}{RGB}{30,95,140}  % Steel Blue
+% \definecolor{PrimaryColor}{RGB}{60,80,110}  % Slate Blue
+% \definecolor{PrimaryColor}{RGB}{0,105,120}  % Teal
+% \definecolor{PrimaryColor}{RGB}{34,102,68}  % Forest Green
+% \definecolor{PrimaryColor}{RGB}{88,50,140}  % Royal Purple
+% \definecolor{PrimaryColor}{RGB}{128,28,48}  % Burgundy
+% \definecolor{PrimaryColor}{RGB}{165,25,45}  % Crimson
+% \definecolor{PrimaryColor}{RGB}{170,70,20}  % Burnt Orange
+% \definecolor{PrimaryColor}{RGB}{55,60,70}   % Charcoal
+\colorlet{SecondaryColor}{PrimaryColor!20} % row shading; higher (e.g. !25) = darker, lower (e.g. !10) = lighter
+\definecolor{DarkGrey}{gray}{0.2}
+\definecolor{MediumGrey}{gray}{0.45} 
+
+\colorlet{BorderColor}{PrimaryColor}
+\colorlet{BannerTextColor}{white}
+\colorlet{LinkColor}{MediumGrey}
+
+% ---------- THEME: Sizes & Spacing ----------
+\newlength{\RuleWidth}
+\setlength{\RuleWidth}{0.5pt}
+
+\setlength{\tabcolsep}{3pt} % Reduced side padding
+\renewcommand{\arraystretch}{0.95}\setlength{\extrarowheight}{1.5pt}
+\arrayrulecolor{BorderColor}
+
+\newlength{\LabelWidth}
+\setlength{\LabelWidth}{2.8cm}
+
+\newlength{\HeaderGap}
+\setlength{\HeaderGap}{6pt}
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% Configure hyperref
+\hypersetup{
+    colorlinks=true,
+    urlcolor=LinkColor,
+    linkcolor=LinkColor,
+    pdfborder={0 0 0},
+    pdftitle={Resume -- Shubham Jadhav},
+    pdfauthor={Shubham Jadhav}
+}
+
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% ---------- COMPONENTS ----------
+
+% 1. Header (Aligned as a single strip)
+\newcommand{\ResumeHeader}[6]{%
+  \noindent
+  \parbox[b]{0.65\linewidth}{%
+    {\NameFont #1 \,|\, #2} \\[2pt]
+    {\BodyFontSize\color{DarkGrey} #3}%
+  }%
+  \hfill
+  \parbox[b]{0.35\linewidth}{%
+    \raggedleft
+    \BodyFontSize
+    #4 \\
+    #5 \\
+    #6%
+  }%
+  \vspace{\HeaderGap}\par
+}
+
+% 2. Section Block
+\newtcolorbox{ResumeSection}[1]{
+  colback=white,
+  colframe=BorderColor,
+  coltitle=BannerTextColor,
+  boxrule=\RuleWidth,
+  left=0pt, right=0pt, top=0pt, bottom=0pt,
+  boxsep=0pt,
+  before=\vspace{-0.5pt}\par\noindent,
+  after=\par\nointerlineskip,
+  fonttitle=\BannerTitleFont\vphantom{gjpqy},
+  halign title=center,
+  title={#1},
+  toptitle=3pt, bottomtitle=3pt,
+  titlerule=0pt,
+  sharp corners
+}
+
+% 3. Bullets
+\newenvironment{Bullets}{%
+  \begin{itemize}[leftmargin=*, nosep, itemsep=2.5pt, topsep=1pt, partopsep=0pt, parsep=0pt, label={\small\textbullet}]
+}{%
+  \end{itemize}
+}
+
+% 4. Link & Date Range
+\newcommand{\Link}[2]{\href{#1}{\LinkSize\LinkFont #2}}
+\newcommand{\DateRange}[2]{#1 -- #2}
+
+\begin{document}
+\BodyFontSize
+
+% ================= HEADER =================
+\ResumeHeader{Shubham Jadhav}{CS24S009}%
+{Department of Computer Science \& Engineering, IIT Madras}%
+{\textbf{\faGlobe \hspace{2pt} Portfolio:} \Link{https://shubham-jadhav-FiatLux.github.io}{shubham-jadhav-FiatLux.github.io}}%
+{\textbf{\faGithub \hspace{2pt} GitHub:} \Link{https://github.com/shubham-jadhav-FiatLux}{github.com/shubham-jadhav-FiatLux}}%
+{\textbf{\faEnvelope \hspace{2pt} Email:} \Link{mailto:cs24s009@cse.iitm.ac.in}{cs24s009@cse.iitm.ac.in}}
+
+% ================= EDUCATION =================
+\begin{ResumeSection}{Education}
+  \begin{tabularx}{\linewidth}{ >{\centering\arraybackslash}m{2.5cm} | X | X | >{\centering\arraybackslash}m{2.5cm} }
+    \rowcolor{SecondaryColor}
+    \CellStrut\textbf{Year} & \textbf{Degree / Certificate} & \textbf{Institute} & \textbf{CGPA / \%} \\ \hline
+    2024 -- Present & M.S. by Research / CSE & Indian Institute of Technology Madras & 7.78 / 10 \\ \hline
+    2017 -- 2021 & B.Tech / CSE & Savitribai Phule Pune University & 9.11 / 10 \\ \hline
+    2017 & Class XII (Maharashtra State Board) & Vivekanand College Kolhapur & 82.23 \% \\ \hline
+    2015 & Class X (Maharashtra State Board) & Gadhinglaj High School Gadhinglaj & 94.20 \%
+  \end{tabularx}
+\end{ResumeSection}
+
+% ================= TECHNICAL SKILLS =================
+\begin{ResumeSection}{Technical Skills}
+  \begin{tabularx}{\linewidth}{ >{\columncolor{SecondaryColor}\bfseries}p{\LabelWidth} | X }
+    \CellStrut Languages & C and C++, Python, Java, SQL \\ \hline
+    \CellStrut HPC & CUDA, OpenMP, OpenACC, MPI, HIP \\ \hline
+    \CellStrut Rendering & OpenGL, WebGL, DirectX, Win32 SDK \\ \hline
+    \CellStrut Tools & Linux/POSIX, LLVM, Docker, Ghidra, Git/GitHub, LaTeX, Slurm, LLM, Ollama \\ \hline
+    \CellStrut \SideLabel[1.5\baselineskip]{Course Work} & 
+    \textbf{PG Courses:} GPU Programming, Parallel Scientific Computing, Secure Systems Engineering, Program Analysis, Advanced Data Structures and Algorithms, Advanced Computer Architecture \par
+    \textbf{UG Courses:} Operating Systems, Data Structures and Algorithms, Computer Architecture, Database Management Systems, Computer Networks, Compiler Design
+  \end{tabularx}
+\end{ResumeSection}
+
+% ================= RESEARCH WORK =================
+\begin{ResumeSection}{Research}
+  \begin{tabularx}{\linewidth}{ >{\columncolor{SecondaryColor}\bfseries}p{\LabelWidth} | X }
+    \rowcolor{SecondaryColor}
+    \multicolumn{2}{m{\dimexpr\linewidth-2\tabcolsep\relax}}{%
+      \CellStrut{\EntryTitleFont Capacitated Vehicle Routing Problem} \hfill \DateRange{Jul'24}{Present} \newline
+      \textit{M.S. Thesis | Guide: Prof. Rupesh Nasre, Prof. Narayanaswamy N S}
+    } \\ \hline
+    \CellStrut \SideLabel[2\baselineskip]{Context \& Problem} & The Capacitated Vehicle Routing Problem (CVRP) is an \textbf{NP-hard combinatorial optimization problem} which asks for a set of \textbf{minimum-cost routes} that start and end at a single depot. The routes serve a set of customers with known demands, and every vehicle has the same limited capacity. Each customer must be visited exactly once, and the total demand on a route may not exceed the vehicle capacity. CVRP sits at the core of logistics, parcel delivery and distribution planning, where even small savings in travelled distance add up to large \textbf{reductions in cost and emissions}. \\ \hline
+    \CellStrut \SideLabel[1.5\baselineskip]{\parbox{\LabelWidth}{Approach \& \\ Contributions}} & 
+    \vspace{-1.5ex}
+    \begin{Bullets}
+      \item Developed a solver built from \textbf{simple, fast heuristics}: a geometry-aware construction, granular local search, and a ruin-and-recreate metaheuristic applied through a size-independent decomposition and recombination scheme with parallel execution.
+      \item On \textbf{million-scale benchmark instances}, our solver \textbf{beats the state of the art} on average within a few seconds, and it improves best-known solutions within 600 seconds.
+      \item Achieves roughly a \textbf{10$\times$ reduction in runtime} compared to SOTA, on a standard 8-core machine.
+    \end{Bullets}
+    \vspace{-1ex}
+  \end{tabularx}
+\end{ResumeSection}
+
+% ================= PROJECTS =================
+\begin{ResumeSection}{Projects}
+  \begin{tabularx}{\linewidth}{ X }
+    \rowcolor{SecondaryColor}
+    \CellStrut{\EntryTitleFont Analyzing AI Task Deployment Workflows \& Security} \textit{| Python, LangChain, Ollama, Llama 3.1} \hfill {Secure Systems Engg. Coursework -- \DateRange{Jan'26}{Apr'26}} \\
+    \vspace{-1.5ex}
+    \begin{Bullets}
+      \item Analyzed the enterprise risks of \textbf{excessive agency} in \textbf{Agentic AI workflows} (\textbf{OWASP Top 10}) by engineering a \textbf{LangChain} \& \textbf{Llama 3.1} environment to execute a zero-click \textbf{Indirect Prompt Injection}, proving how poisoned data hijacks the \textbf{ReAct loop} for autonomous exfiltration.
+      \item Integrated a \textbf{Human-In-The-Loop (HITL)} authorization mechanism to establish a hard security boundary, enforcing explicit user consent before high-impact tool executions to prevent unintended damage. Designed a \textbf{Dual LLM ``Inspector''} architecture to function as an autonomous semantic firewall, utilizing a strict secondary model to evaluate tool parameters and neutralize malicious intent in real-time.
+      \item Proposed an \textbf{LLM Security Gateway} and \textbf{Scoped MCP Authentication} architecture to enforce real-time semantic inspection and cryptographic integrity, mitigating multi-agent \textbf{Delegation Chain Spoofing} risks.
+    \end{Bullets}
+    \vspace{-1ex} \\ \hline
+    
+    \rowcolor{SecondaryColor}
+    \CellStrut{\EntryTitleFont Domain-Specific AI Compiler \& Accelerated CUDA Kernel Engine} \textit{| C++, CUDA, Triton, LLVM, CMake} \hfill {\DateRange{May'26}{Aug'26}} \\
+    \vspace{-1.5ex}
+    \begin{Bullets}
+      \item Architected a domain-specific C++/Python ML compiler that parses tensor computational graphs into \textbf{MLIR/LLVM IR}, developing custom transformation passes (operator fusion, dead-code elimination, loop unrolling) to reduce graph execution overhead.
+      \item Engineered a code generator lowering optimized IR into fused \textbf{OpenAI Triton} and \textbf{CUDA C++} kernels, applying shared memory tiling and vectorized loads (\texttt{float4}) to eliminate DRAM write-backs and runtime dispatch latency.
+      \item Profiled hardware execution counters using \textbf{NVIDIA Nsight Compute} and \textbf{perf}, achieving a \textbf{1.42$\times$ end-to-end inference speedup} and a \textbf{38\% reduction} in VRAM bandwidth consumption over PyTorch baselines.
+    \end{Bullets}
+    \vspace{-1ex} \\ \hline
+
+    \rowcolor{SecondaryColor}
+    \CellStrut{\EntryTitleFont Parallel SSSP Solver} \textit{| CUDA C++, NVIDIA Thrust} \hfill {GPU Programming Coursework -- \DateRange{Aug'25}{Nov'25}} \\
+    \vspace{-1.5ex}
+    \begin{Bullets}
+      \item Implemented static and adaptive \textbf{$\Delta$-stepping parallel SSSP algorithms} on NVIDIA \textbf{GPU}s to process \textbf{ultra-large sparse graphs} in CSR format.
+      \item Applied \textbf{Thrust} parallel algorithms to \textbf{dynamic worklist queues}, dynamically scaling bucket widths to maintain K=65,536 concurrent active work items.
+      \item Leveraged native \textbf{atomic operations} and custom memory-reuse patterns to process 300M edges without host-device synchronization overhead.
+    \end{Bullets}
+    \vspace{-1ex} \\ \hline
+
+    \rowcolor{SecondaryColor}
+    \CellStrut{\EntryTitleFont Valley of Whispering Bamboo: Interactive 3D Portfolio} \textit{| Three.js, GLSL, Web Audio} \hfill {\DateRange{Sep'21}{May'24}} \\
+    \vspace{-1.5ex}
+    \begin{Bullets}
+      \item Engineered an explorable, fully \textbf{procedural} 3D world (\textbf{21k LoC}) with \textbf{zero model, texture or audio files}, all generated in code.
+      \item Rendered \textbf{1.7M triangles in $\sim$200 draw calls} via \textbf{GPU instancing} \& mesh batching, with \textbf{adaptive quality} for low-end devices.
+      \item Directed a \textbf{5-min cinematic walkthrough} mode using an autopilot and a camera director on arc-length \textbf{B\'ezier splines}.
+    \end{Bullets}
+    \vspace{-1ex} \\ \hline
+
+    \rowcolor{SecondaryColor}
+    \CellStrut{\EntryTitleFont Other Projects} \\
+    \vspace{-1.5ex}
+    \begin{Bullets}
+      \item \textbf{PENETRALIA} -- Co-engineered a real-time graphics rendering demo featuring a CUDA-FFT ocean solver, procedural terrain, atmospheric scattering, and an advanced post-processing pipeline (godrays, bloom, depth of field) guided by B\'ezier camera animation. \textbf{Link:} \Link{https://youtu.be/Ze5QbGQnguM}{https://youtu.be/Ze5QbGQnguM}
+      \item \textbf{Asa He Chanchal Maan} -- Demo created using the OpenGL graphics library and C language. Win32 SDK is used for windowing purposes and data structures in C are used to render scenes. \textbf{Link:} \Link{https://youtu.be/4pB2rZeWkNU}{https://youtu.be/4pB2rZeWkNU}
+    \end{Bullets}
+    \vspace{-1ex}
+  \end{tabularx}
+\end{ResumeSection}
+
+% ================= POSITION OF RESPONSIBILITY =================
+\begin{ResumeSection}{Positions of Responsibility \& Other Activities}
+  \begin{tabularx}{\linewidth}{ >{\columncolor{SecondaryColor}\bfseries}p{\LabelWidth} | X }
+    \CellStrut \SideLabel[0.5\baselineskip]{MS Representative} & Elected representative for \textbf{MS by Research scholars} in CSE at IIT Madras; acted as liaison between students and faculty leadership on academic and administrative matters. \\ \hline
+    \CellStrut \SideLabel[0.5\baselineskip]{Teaching Assistant} & Facilitated core \textbf{Systems} and \textbf{Algorithms} courses which included GPU Programming, Blockchain Technology, Natural Language Processing; designed problem sets and exams, conducted weekly tutorials, and mentored undergraduate and graduate students. \\ \hline
+    \CellStrut \SideLabel[0.5\baselineskip]{Event Coordinator} & Coordinated logistics and technical operations for major IIT Madras events, including the \textbf{ICPC India Online Round} (2025, 2026) and the CSE Degree Distribution Ceremony. \\ \hline
+    \CellStrut \SideLabel[0.5\baselineskip]{NSS Head} & Headed the \textbf{National Service Scheme} unit during B.Tech; directed community initiatives including blood donation drives, check-dam construction, and a 7-day rural development camp in Varoti Bk., Pune. \\ \hline
+    \CellStrut RSP Leader & Led the \textbf{Road Safety Patrol} platoon during high school, overseeing team drills and public traffic safety awareness drives. \\ \hline
+  \end{tabularx}
+\end{ResumeSection}
+
+% ================= INTERESTS & HOBBIES =================
+\begin{ResumeSection}{Interests \& Hobbies}
+  \begin{tabularx}{\linewidth}{ X }
+    \CellStrut \textbf{Arts:} Drawing, Painting, Calligraphy \hfill | \hfill \textbf{Music:} Tabla, Guitar \hfill | \hfill \textbf{Sports:} Table Tennis, Cricket, Volleyball, Carrom, Chess, Kho-Kho
+  \end{tabularx}
+\end{ResumeSection}
+
+\end{document}
