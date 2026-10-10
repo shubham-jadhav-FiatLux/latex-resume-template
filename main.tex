@@ -141,7 +141,7 @@
 {Department of Computer Science \& Engineering, IIT Madras}%
 {\textbf{\faGlobe \hspace{2pt} Portfolio:} \Link{https://shubham-jadhav-FiatLux.github.io}{shubham-jadhav-FiatLux.github.io}}%
 {\textbf{\faGithub \hspace{2pt} GitHub:} \Link{https://github.com/shubham-jadhav-FiatLux}{github.com/shubham-jadhav-FiatLux}}%
-{\textbf{\faEnvelope \hspace{2pt} Email:} \Link{mailto:cs24s009@cse.iitm.ac.in}{cs24s009@cse.iitm.ac.in}}
+
 
 % ================= EDUCATION =================
 \begin{ResumeSection}{Education}
@@ -149,8 +149,8 @@
     \rowcolor{SecondaryColor}
     \CellStrut\textbf{Year} & \textbf{Degree / Certificate} & \textbf{Institute} & \textbf{CGPA / \%} \\ \hline
     2024 -- Present & M.S. by Research / CSE & Indian Institute of Technology Madras & 7.78 / 10 \\ \hline
-    2017 -- 2021 & B.Tech / CSE & Savitribai Phule Pune University & 9.11 / 10 \\ \hline
-    2017 & Class XII (Maharashtra State Board) & Vivekanand College Kolhapur & 82.23 \% \\ \hline
+    2017 -- 2021 & B.Tech / CSE & Savitribai Phule Pune University & 9.08 / 10 \\ \hline
+    2017 & Class XII (Maharashtra State Board) & Vivekanand College Kolhapur & 82.63 \% \\ \hline
     2015 & Class X (Maharashtra State Board) & Gadhinglaj High School Gadhinglaj & 94.20 \%
   \end{tabularx}
 \end{ResumeSection}
@@ -158,12 +158,12 @@
 % ================= TECHNICAL SKILLS =================
 \begin{ResumeSection}{Technical Skills}
   \begin{tabularx}{\linewidth}{ >{\columncolor{SecondaryColor}\bfseries}p{\LabelWidth} | X }
-    \CellStrut Languages & C and C++, Python, Java, SQL \\ \hline
+    \CellStrut Languages & C and C++, Python, SQL \\ \hline
     \CellStrut HPC & CUDA, OpenMP, OpenACC, MPI, HIP \\ \hline
-    \CellStrut Rendering & OpenGL, WebGL, DirectX, Win32 SDK \\ \hline
-    \CellStrut Tools & Linux/POSIX, LLVM, Docker, Ghidra, Git/GitHub, LaTeX, Slurm, LLM, Ollama \\ \hline
+    \CellStrut Rendering & OpenGL, WebGL, DirectX, Three.js, GLSL, Win32 SDK \\ \hline
+    \CellStrut Tools & Linux/POSIX, LLVM, Docker, Ghidra, Git/GitHub, LaTeX, Slurm, LLM, Ollama, LangChain \\ \hline
     \CellStrut \SideLabel[1.5\baselineskip]{Course Work} & 
-    \textbf{PG Courses:} GPU Programming, Parallel Scientific Computing, Secure Systems Engineering, Program Analysis, Advanced Data Structures and Algorithms, Advanced Computer Architecture \par
+    \textbf{PG Courses:} GPU Programming, Parallel Scientific Computing, Secure Systems Engineering, Program Analysis, Advanced Data Structures and Algorithms, Advanced Computer Architecture \par 
     \textbf{UG Courses:} Operating Systems, Data Structures and Algorithms, Computer Architecture, Database Management Systems, Computer Networks, Compiler Design
   \end{tabularx}
 \end{ResumeSection}
@@ -176,13 +176,14 @@
       \CellStrut{\EntryTitleFont Capacitated Vehicle Routing Problem} \hfill \DateRange{Jul'24}{Present} \newline
       \textit{M.S. Thesis | Guide: Prof. Rupesh Nasre, Prof. Narayanaswamy N S}
     } \\ \hline
-    \CellStrut \SideLabel[2\baselineskip]{Context \& Problem} & The Capacitated Vehicle Routing Problem (CVRP) is an \textbf{NP-hard combinatorial optimization problem} which asks for a set of \textbf{minimum-cost routes} that start and end at a single depot. The routes serve a set of customers with known demands, and every vehicle has the same limited capacity. Each customer must be visited exactly once, and the total demand on a route may not exceed the vehicle capacity. CVRP sits at the core of logistics, parcel delivery and distribution planning, where even small savings in travelled distance add up to large \textbf{reductions in cost and emissions}. \\ \hline
-    \CellStrut \SideLabel[1.5\baselineskip]{\parbox{\LabelWidth}{Approach \& \\ Contributions}} & 
+    \CellStrut \SideLabel[2\baselineskip]{Context \& Problem} & The Capacitated Vehicle Routing Problem (CVRP) is an \textbf{NP-hard combinatorial optimization problem} which asks for a set of \textbf{minimum-cost routes} that start and end at a single depot. A homogeneous fleet of vehicles must service a set of customers with known demands, visiting each exactly once without exceeding vehicle capacity constraints. CVRP underpins modern logistics and distribution planning, where marginal savings in traveled distance yield massive \textbf{reductions in cost and emissions}. \\ \hline
+    \CellStrut \SideLabel[3.0\baselineskip]{\parbox{\LabelWidth}{Approach \& \\ Contributions}} & 
     \vspace{-1.5ex}
     \begin{Bullets}
-      \item Developed a solver built from \textbf{simple, fast heuristics}: a geometry-aware construction, granular local search, and a ruin-and-recreate metaheuristic applied through a size-independent decomposition and recombination scheme with parallel execution.
-      \item On \textbf{million-scale benchmark instances}, our solver \textbf{beats the state of the art} on average within a few seconds, and it improves best-known solutions within 600 seconds.
-      \item Achieves roughly a \textbf{10$\times$ reduction in runtime} compared to SOTA, on a standard 8-core machine.
+      \item \textbf{Engineered a high-performance C++ solver} utilizing a novel geometry-aware construction, highly granular local search, and multi-threaded ruin-and-recreate metaheuristics.
+      \item \textbf{Pioneered an Adaptive Spiral Recombination architecture} to dynamically decompose and merge sub-problems, enabling the engine to scale efficiently on massive datasets where traditional routing algorithms asymptotically fail.
+      \item Discovered \textbf{new Best-Known Solutions (BKS) on million-scale instances}, achieving a \textbf{10× runtime reduction} compared to SOTA.
+      \item \textbf{Innovated a Geometry-Aware Initialization} that outperforms existing construction methods in both \textbf{speed and scalability}.
     \end{Bullets}
     \vspace{-1ex}
   \end{tabularx}
@@ -191,38 +192,38 @@
 % ================= PROJECTS =================
 \begin{ResumeSection}{Projects}
   \begin{tabularx}{\linewidth}{ X }
+
+
     \rowcolor{SecondaryColor}
-    \CellStrut{\EntryTitleFont Analyzing AI Task Deployment Workflows \& Security} \textit{| Python, LangChain, Ollama, Llama 3.1} \hfill {Secure Systems Engg. Coursework -- \DateRange{Jan'26}{Apr'26}} \\
+    \CellStrut{\EntryTitleFont TaintGate: Information-Flow Control for LLM Agents {\Link{https://github.com/shubham-jadhav-FiatLux}{\textbf \faGithub}} } \textit{| Python, MCP, LangChain, AgentDojo} \hfill {\DateRange{Jan'26}{May'26}} \newline 
+    \textit{Secure Systems Engineering + Program Analysis + LLMs}
+    \\
     \vspace{-1.5ex}
     \begin{Bullets}
-      \item Analyzed the enterprise risks of \textbf{excessive agency} in \textbf{Agentic AI workflows} (\textbf{OWASP Top 10}) by engineering a \textbf{LangChain} \& \textbf{Llama 3.1} environment to execute a zero-click \textbf{Indirect Prompt Injection}, proving how poisoned data hijacks the \textbf{ReAct loop} for autonomous exfiltration.
-      \item Integrated a \textbf{Human-In-The-Loop (HITL)} authorization mechanism to establish a hard security boundary, enforcing explicit user consent before high-impact tool executions to prevent unintended damage. Designed a \textbf{Dual LLM ``Inspector''} architecture to function as an autonomous semantic firewall, utilizing a strict secondary model to evaluate tool parameters and neutralize malicious intent in real-time.
-      \item Proposed an \textbf{LLM Security Gateway} and \textbf{Scoped MCP Authentication} architecture to enforce real-time semantic inspection and cryptographic integrity, mitigating multi-agent \textbf{Delegation Chain Spoofing} risks.
-    \end{Bullets}
-    \vspace{-1ex} \\ \hline
-    
-    \rowcolor{SecondaryColor}
-    \CellStrut{\EntryTitleFont Domain-Specific AI Compiler \& Accelerated CUDA Kernel Engine} \textit{| C++, CUDA, Triton, LLVM, CMake} \hfill {\DateRange{May'26}{Aug'26}} \\
-    \vspace{-1.5ex}
-    \begin{Bullets}
-      \item Architected a domain-specific C++/Python ML compiler that parses tensor computational graphs into \textbf{MLIR/LLVM IR}, developing custom transformation passes (operator fusion, dead-code elimination, loop unrolling) to reduce graph execution overhead.
-      \item Engineered a code generator lowering optimized IR into fused \textbf{OpenAI Triton} and \textbf{CUDA C++} kernels, applying shared memory tiling and vectorized loads (\texttt{float4}) to eliminate DRAM write-backs and runtime dispatch latency.
-      \item Profiled hardware execution counters using \textbf{NVIDIA Nsight Compute} and \textbf{perf}, achieving a \textbf{1.42$\times$ end-to-end inference speedup} and a \textbf{38\% reduction} in VRAM bandwidth consumption over PyTorch baselines.
+      \item Engineered a deterministic \textbf{reference monitor} and \textbf{MCP proxy} to secure LLM agents against \textbf{prompt injection}, replacing brittle probabilistic guardrails.
+      \item Enforced strict \textbf{information-flow control} via a \textbf{Biba $\times$ Bell-LaPadula} lattice, utilizing session-level \textbf{taint propagation} and backward \textbf{program slicing} to dynamically generate source-to-sink explanations for blocked actions.
+      \item Evaluated defense efficacy via the \textbf{AgentDojo} benchmark (629 vectors), plotting precision-utility frontiers to quantify mitigation rates across models.
     \end{Bullets}
     \vspace{-1ex} \\ \hline
 
     \rowcolor{SecondaryColor}
-    \CellStrut{\EntryTitleFont Parallel SSSP Solver} \textit{| CUDA C++, NVIDIA Thrust} \hfill {GPU Programming Coursework -- \DateRange{Aug'25}{Nov'25}} \\
+    \CellStrut{\EntryTitleFont MiniDLC: End-to-End Deep Learning Compiler {\Link{https://github.com/shubham-jadhav-FiatLux}{\textbf \faGithub}} } \textit{| C++, Python, LLVM, CUDA} \hfill {\DateRange{Aug'25}{Dec'25}} \newline
+    \textit{GPU Programming + Program Analysis + Computer Architecture}
+    \\
     \vspace{-1.5ex}
     \begin{Bullets}
-      \item Implemented static and adaptive \textbf{$\Delta$-stepping parallel SSSP algorithms} on NVIDIA \textbf{GPU}s to process \textbf{ultra-large sparse graphs} in CSR format.
-      \item Applied \textbf{Thrust} parallel algorithms to \textbf{dynamic worklist queues}, dynamically scaling bucket widths to maintain K=65,536 concurrent active work items.
-      \item Leveraged native \textbf{atomic operations} and custom memory-reuse patterns to process 300M edges without host-device synchronization overhead.
+      \item Engineered an end-to-end compiler lowering models from a custom \textbf{Python frontend} into native machine code via C++ \textbf{SSA Graph} and \textbf{Loop IRs}.
+      \item Implemented \textbf{reverse-mode autodiff} as a graph pass, optimized cache locality via dependence-checked \textbf{operator fusion}, and engineered liveness-based \textbf{memory planning} using interference coloring.
+      \item Generated vectorized CPU code via \textbf{LLVM ORC JIT} and tiled GPU kernels via \textbf{CUDA NVRTC}, successfully training an \textbf{MNIST MLP} and \textbf{Char-GPT}.
     \end{Bullets}
     \vspace{-1ex} \\ \hline
 
+
+
     \rowcolor{SecondaryColor}
-    \CellStrut{\EntryTitleFont Valley of Whispering Bamboo: Interactive 3D Portfolio} \textit{| Three.js, GLSL, Web Audio} \hfill {\DateRange{Sep'21}{May'24}} \\
+    \CellStrut{\EntryTitleFont Valley of Peace: Interactive 3D Portfolio {\Link{https://github.com/shubham-jadhav-FiatLux/shubham-jadhav-FiatLux.github.io}{\textbf \faGithub}} } \textit{| Three.js, GLSL, Web Audio} \hfill {\DateRange{Sep'21}{May'24}} \newline
+    {\textit{ \hspace{2pt} Portfolio:} \Link{https://shubham-jadhav-FiatLux.github.io}{shubham-jadhav-FiatLux.github.io}}
+    \\
     \vspace{-1.5ex}
     \begin{Bullets}
       \item Engineered an explorable, fully \textbf{procedural} 3D world (\textbf{21k LoC}) with \textbf{zero model, texture or audio files}, all generated in code.
@@ -231,12 +232,24 @@
     \end{Bullets}
     \vspace{-1ex} \\ \hline
 
+
+
     \rowcolor{SecondaryColor}
     \CellStrut{\EntryTitleFont Other Projects} \\
     \vspace{-1.5ex}
     \begin{Bullets}
-      \item \textbf{PENETRALIA} -- Co-engineered a real-time graphics rendering demo featuring a CUDA-FFT ocean solver, procedural terrain, atmospheric scattering, and an advanced post-processing pipeline (godrays, bloom, depth of field) guided by B\'ezier camera animation. \textbf{Link:} \Link{https://youtu.be/Ze5QbGQnguM}{https://youtu.be/Ze5QbGQnguM}
-      \item \textbf{Asa He Chanchal Maan} -- Demo created using the OpenGL graphics library and C language. Win32 SDK is used for windowing purposes and data structures in C are used to render scenes. \textbf{Link:} \Link{https://youtu.be/4pB2rZeWkNU}{https://youtu.be/4pB2rZeWkNU}
+        \item \textbf{Coursework Implementations  {\Link{https://github.com/shubham-jadhav-FiatLux/IIT-Madras_Coursework}{\textbf \faGithub}} :} cache, branch-predictor, Tomasulo out-of-order \& \textbf{MESI} coherence simulators; \textbf{big.LITTLE} scheduler;
+  \textbf{LLVM} range-analysis, Andersen points-to \& array bounds-check passes; \textbf{CUDA} Bor\r{u}vka MST and CPU-vs-GPU sine-wave simulation; stack-canary bypass,
+  \textbf{ret2libc/ROP}, format-string \& glibc heap exploits; \textbf{MPI+OpenMP} ray tracer and parallel Poisson solvers.
+
+        \item \textbf{Real-Time Rendering {\Link{https://github.com/shubham-jadhav-FiatLux/Real-Time_Rendering}{\textcolor{MediumGrey}{\faGithub}}} :} built \textbf{260+} rendering programs and \textbf{15+} mini-projects across \textbf{6 platforms} --- \textbf{Windows} (Win32
+  SDK), \textbf{Linux} (X11/GLX), \textbf{Android} (Java), \textbf{macOS} \& \textbf{iOS} (Objective-C++), \textbf{Web} (JavaScript) --- covering projections, 3D
+  transforms, texturing, model loading and per-fragment Phong lighting in \textbf{OpenGL} fixed-function \& programmable pipelines, \textbf{OpenGL ES}, \textbf{WebGL}
+  and \textbf{Direct3D 11}, with \textbf{GLSL}/\textbf{HLSL} shaders and \textbf{CUDA}/\textbf{OpenCL}--OpenGL interop.
+  {\textbf{{\textcolor{MediumGrey!70}{\faYoutube}} \hspace{2pt} YouTube :} \Link{https://www.youtube.com/@shubham-jadhav-FiatLux}{www.youtube.com/@shubham-jadhav-FiatLux}}%
+        
+      \item \textbf{PENETRALIA} -- Co-engineered a real-time graphics rendering demo featuring a CUDA-FFT ocean solver, procedural terrain, atmospheric scattering, and an advanced post-processing pipeline (godrays, bloom, depth of field) guided by B\'ezier camera animation. {\textcolor{MediumGrey!70}{\faYoutube}} \Link{https://youtu.be/Ze5QbGQnguM}{https://youtu.be/Ze5QbGQnguM}
+      \item \textbf{Asa He Chanchal Maan} -- Demo created using the OpenGL graphics library and C language. Win32 SDK is used for windowing purposes and data structures in C are used to render scenes. {\textcolor{MediumGrey!70}{\faYoutube}} \Link{https://youtu.be/4pB2rZeWkNU}{https://youtu.be/4pB2rZeWkNU}
     \end{Bullets}
     \vspace{-1ex}
   \end{tabularx}
@@ -245,10 +258,10 @@
 % ================= POSITION OF RESPONSIBILITY =================
 \begin{ResumeSection}{Positions of Responsibility \& Other Activities}
   \begin{tabularx}{\linewidth}{ >{\columncolor{SecondaryColor}\bfseries}p{\LabelWidth} | X }
-    \CellStrut \SideLabel[0.5\baselineskip]{MS Representative} & Elected representative for \textbf{MS by Research scholars} in CSE at IIT Madras; acted as liaison between students and faculty leadership on academic and administrative matters. \\ \hline
-    \CellStrut \SideLabel[0.5\baselineskip]{Teaching Assistant} & Facilitated core \textbf{Systems} and \textbf{Algorithms} courses which included GPU Programming, Blockchain Technology, Natural Language Processing; designed problem sets and exams, conducted weekly tutorials, and mentored undergraduate and graduate students. \\ \hline
+    \CellStrut \SideLabel[0.5\baselineskip]{MS Representative} & Elected representative for \textbf{MS by Research scholars} in CSE at IIT Madras; collaborated with CSE faculty through class committee meetings to present student feedback on course delivery, quizzes, and assessments, and discuss course structure and grading. \\ \hline
+    \CellStrut \SideLabel[0.5\baselineskip]{Teaching Assistant} & Served as TA for \textbf{Systems} and \textbf{Algorithms} courses, including GPU Programming, Blockchain Technology, and Natural Language Processing; designed problem sets, assignments and exams, conducted tutorials and office hours, and mentored students. \\ \hline
     \CellStrut \SideLabel[0.5\baselineskip]{Event Coordinator} & Coordinated logistics and technical operations for major IIT Madras events, including the \textbf{ICPC India Online Round} (2025, 2026) and the CSE Degree Distribution Ceremony. \\ \hline
-    \CellStrut \SideLabel[0.5\baselineskip]{NSS Head} & Headed the \textbf{National Service Scheme} unit during B.Tech; directed community initiatives including blood donation drives, check-dam construction, and a 7-day rural development camp in Varoti Bk., Pune. \\ \hline
+    \CellStrut \SideLabel[0.5\baselineskip]{NSS Head} & Headed the \textbf{National Service Scheme} unit during B.Tech; directed community initiatives including street plays, blood donation drives, check-dam construction, tree plantation drives, and a 7-day rural development camp in Varoti Bk., Pune. \\ \hline
     \CellStrut RSP Leader & Led the \textbf{Road Safety Patrol} platoon during high school, overseeing team drills and public traffic safety awareness drives. \\ \hline
   \end{tabularx}
 \end{ResumeSection}
